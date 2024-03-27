@@ -6,7 +6,7 @@
 /*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 11:41:53 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/26 16:12:18 by ntodisoa         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:59:01 by ntodisoa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ void	char_to_signal(int c, int pid)
 	int	i;
 
 	i = 0;
+	printf(" ");
 	while (i < 8)
 	{
+		usleep(DELAY);
 		if (c & 128)
-			kill(pid, SIGUSR1);
-		else
 			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
 		c = c << 1;
 		i++;
 	}
@@ -64,10 +66,11 @@ void	int_to_signal(int c, int pid)
 	i = 0;
 	while (i < 8*4)
 	{
+		usleep(DELAY);
 		if (c & 0x80000000)
-			kill(pid, SIGUSR1);
-		else
 			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
 		c = c << 1;
 		i++;
 	}

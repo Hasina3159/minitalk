@@ -18,7 +18,7 @@ $(CLIENT) : $(SRC_CLIENT)
 	$(CC) $(SRC_CLIENT) $(FLAGS)  -o  $(CLIENT)
 
 $(SERVER) : $(SRC_SERVER)
-	$(CC) $(FLAGS) $(SRC_SERVER) -o  $(SERVER)
+	$(CC) $(FLAGS) $(SRC_SERVER) -o  $(SERVER) -g
 
 all : $(CLIENT) $(SERVER)
 
